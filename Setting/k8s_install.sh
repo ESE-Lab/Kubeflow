@@ -1,4 +1,4 @@
-apt install yum -Y
+apt install yum
 
 yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
