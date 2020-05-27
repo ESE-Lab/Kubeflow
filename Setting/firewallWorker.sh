@@ -1,4 +1,4 @@
-sudo apt firewalld
+sudo apt install firewalld
 
 #Master Node
 firewall-cmd --permanent --zone=public --add-port=10250/tcp
