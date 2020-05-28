@@ -125,6 +125,10 @@ kubectl get nodes
 ![getnodes](./img/getnodes.png)
 ![masterpod](./img/masterpod.png)
 
+kubeflow install은 다음 블로그에 잘 정리해 놓았다. 우리는 kubernetes를 잘 다운받았으니 minikube 다음부터 진행하면 된다.
+http://ghcksdk.com/kubeflow-installation/
+
+![kubeflow](./img/kubeflow.png)
 
 - Error
 
