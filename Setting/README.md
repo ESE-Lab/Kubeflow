@@ -47,8 +47,9 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
 [k8s_install.sh](./k8s_install.sh)
 yum에서 repository문제 시 apt-get으로
-[ubuntu16.04_kubernetes_install.md](./ubuntu16.04_kubernetes_install.md) 참고해서 설치
-1.14.x 버전으로 만들어야하면 아래 소스를 참고해요!
+[ubuntu16.04_kubernetes_install.md](./ubuntu16.04_kubernetes_install.md) 참고해서 설치  
+
+1.14.x 버전으로 만들어야하면 아래 소스를 참고해요!  
 [k8s_downgrade.sh](./k8s_downgrade.sh)
 
 </div>
@@ -67,7 +68,9 @@ yum에서 repository문제 시 apt-get으로
 <summary> swap Off (눌러서 내용보기) </summary>
 <div markdown="1">  
 
-Kubernetes는 Master, Worker 노드 모두 swap을 off 해야한다. Swap이 off 되어 있지 않으면 kubeadm init 단계에서 "[ERROR SWAP]: running with swap on is not supported. Please disable swap" 에러가 출력된다.  
+Kubernetes는 Master, Worker 노드 모두 swap을 off 해야한다.   
+Swap이 off 되어 있지 않으면 kubeadm init 단계에서   
+`"[ERROR SWAP]: running with swap on is not supported. Please disable swap"` 에러가 출력된다.  
 [swapOff.sh](./swapOff.sh)
 
 </div>
@@ -76,36 +79,44 @@ Kubernetes는 Master, Worker 노드 모두 swap을 off 해야한다. Swap이 off
 <details>
 <summary> kubeadm init (눌러서 내용보기) </summary>
 <div markdown="1">  
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
 
-pod network add-on의 종류에 따라서 --pod-network-cidr 설정 값을 다르게 해주어야 한다. pod network add-on로 Calico를 사용하므로 --pod-network-cidr 설정 값을 192.168.0.0/16으로 해야 하지만 가상머신 네트워크 대역인 192.168.0.5/24와 겹치기 때문에 172.16.0.0/16으로 변경하여 사용하자.
+[Create Cluster Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
+
+pod network add-on의 종류에 따라서 `--pod-network-cidr` 설정 값을 다르게 해주어야 한다.   
+
+pod network add-on로 Calico를 사용하므로 `--pod-network-cidr` 설정 값을 `192.168.0.0/16`으로 해야 하지만 가상머신 네트워크 대역인 `192.168.0.5/24`와 겹치기 때문에 `172.16.0.0/16`으로 변경하여 사용하자.
 
 [k8s_init.sh](./k8s_init.sh)
+
 </div>
 </details>
 
 <details>
 <summary> Calico 설치 (눌러서 내용보기) </summary>
 <div markdown="1">  
-https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/calico
 
-kubectl get pods -n kube-system
+[Calico 설치](https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/calico)  
+
+`kubectl get pods -n kube-system`
  - pod network add-on이 설치되어 있지 않은 상태에서는 CoreDNS가 아직 시작되지 않은 상태를 확인할 수 있다.
 ![corednserr](./img/corednserr.png)
 
-pod network add-on 설치는 Master 노드에서만 한다. 'kubeadm init' 단계에서 --pod-network-cidr 설정 값을 172.16.0.0/16으로 변경하여 사용하기는 했지만 Calico YAML 파일에서도 값을 변경하여 설치해야 한다.
+ - pod network add-on 설치는 Master 노드에서만 한다.   
+`kubeadm init` 단계에서 `--pod-network-cidr` 설정 값을 `172.16.0.0/16`으로 변경하여 사용하기는 했지만 Calico YAML 파일에서도 값을 변경하여 설치해야 한다.
 
 [calico.sh](./calico.sh)
 
-pod network add-on를 설치한 이후에 CoreDNS가 정상적으로 시작된 상태를 확인할 수 있습니다.
+- pod network add-on를 설치한 이후에 CoreDNS가 정상적으로 시작된 상태를 확인할 수 있다.
 ![coredns](./img/coredns.png)
 </div>
 </details>
 
 <details>
 <summary> kubeadm join (눌러서 내용보기) </summary>
-<div markdown="1">  
- Worker 노드가 되기 위해서는 'kubeadm join' 명령어를 실행해서 Master 노드에 등록해야 한다. 'kubeadm join' 명령어 실행에 필요한 옵션들은 Master 노드에서 아래 명령어를 실행해서 확인할 수 있다.
+<div markdown="1">   
+
+ Worker 노드가 되기 위해서는 `kubeadm join` 명령어를 실행해서 Master 노드에 등록해야 한다.   
+ `kubeadm join` 명령어 실행에 필요한 옵션들은 Master 노드에서 아래 명령어를 실행해서 확인할 수 있다.
 
 ```
  kubeadm token create --print-join-command
@@ -119,6 +130,8 @@ kubeadm join 192.168.0.5:6443 --token hcfumm.jerovbeueijtcflc --discovery-token-
 </div>
 </details>
 
+--- 
+
 ```
 kubectl get nodes
 ```
@@ -131,10 +144,8 @@ http://ghcksdk.com/kubeflow-installation/
 ![kubeflow](./img/kubeflow.png)
 
 - Error
+    - [coredns error](https://github.com/kubernetes/kubeadm/issues/1292)  
 
-<coredns error>
-https://github.com/kubernetes/kubeadm/issues/1292
 
 - 참고자료
-
-cubrid.com/blog/3820603
+    - [Docker, Kubernetes 환경에서 CUBRID 컨테이너 서비스 해보기](https://www.cubrid.com/blog/3820603)
