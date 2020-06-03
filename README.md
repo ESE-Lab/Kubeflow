@@ -39,8 +39,36 @@ hi
 
 ## 🌼 [Coralboard](https://github.com/ESE-Lab/Kubeflow/tree/master/Coralboard)
 
+### Coral Dev Board란?
 
-hi  
+2019년 초에 구글에서 내놓은 Edge TPU가 장착된 Single-board Computer(SBC) 싱글보드 PC이다.
+
+#### Edge TPU Module Tech Specs
+
+|Item|Specifications|
+|:---:|:---:|
+|CPU|NXP i.MX 8M SOC (quad Cortex-A53, Cortex-M4F)|
+|GPU|Integrated GC7000 Lite Graphics|
+|ML accelerator|Google Edge TPU coprocessor|
+|RAM|1 GB LPDDR4|
+|Flash memory|8 GB eMMC|
+|Wireless|Wi-Fi 2x2 MIMO (802.11b/g/n/ac 2.4/5GHz) Bluetooth 4.1|
+|Dimensions|48mm x 40mm x 5mm|
+
+
+#### Baseboard Tech Specs
+
+|Item|Specifications|
+|:---:|:---:|
+|Flash memory|MicroSD slot|
+|USB|Type-C OTG Type-C power Type-A 3.0 host Micro-B serial console|
+|LAN|Gigabit Ethernet port|
+|Audio|3.5mm audio jack (CTIA compliant) Digital PDM microphone (x2) 2.54mm 4-pin terminal for stereo speakers|
+|Video|HDMI 2.0a (full size) 39-pin FFC connector for MIPI-DSI display (4-lane) 24-pin FFC connector for MIPI-CSI2 camera (4-lane)|
+|GPIO|3.3V power rail 40 - 255 ohms programmable impedance ~82 mA max current|
+|Power|5V DC (USB Type-C)|
+|Dimensions|88 mm x 60 mm x 24mm|
+
 <br>
 
 </div>
