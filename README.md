@@ -105,11 +105,28 @@ Dataset link : https://bit.ly/2V1o5Lb
 
 ## 🌼 [Pipeline](https://github.com/ESE-Lab/Kubeflow/tree/master/Pipeline)
 
-#### 설명
+### Kubeflow pipeline?  
+컨테이너 기반의 end-to-end ML 워크플로우를 만들고 배포할 수 있는 쿠버네티스 플랫폼
+
+컨테이너 기반으로 구성되어 있기 떄문에 확장성 및 재사용성이 좋다.
+
+쿠버네티스의 자원을 관리하기 위해서 백엔드 프레임워크로 `argo`라는 워크플로우 툴을 사용할 예정
+
+https://argoproj.github.io/
+
+### 구성
+
+- 실험(Experiment), 잡(Job), 런(Run)을 추적하고 관리하는 유저 인터페이스
+- ML 워크플로우 단계별 스케쥴링 엔진
+- 파이프라인과 그 컴포넌트들을 생성하는 SDK
+- SDK와 연동하는 쥬피터 노트북
+
+*쉬운 파이프라인 구성 → 쉬운 파이프라인 생성 → 쉬운 재사용*
+
 
 <br>
 
-hi
+
 
 </div>
 </details>
