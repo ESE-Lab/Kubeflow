@@ -47,6 +47,31 @@ hi
 </details>
 
 <details>
+<summary> DataSet & ML model (눌러서 내용보기) </summary>
+<div markdown="1">*
+
+## 🌼 [DataSet](https://github.com/ESE-Lab/Kubeflow/tree/master/DataSet)
+
+### caltech101
+Dataset link : https://bit.ly/2V1o5Lb
+
+#### 선택 이유
+- 이미지 분석 task에 적합함
+- 용량이 200MB 이내로 적당함
+- 공개되어 있는 데이터로 저작권 문제가 없음
+
+#### MNIST를 선택하지 않은 이유
+- 이미지의 크기가 작아서 kubeflow를 통한 학습 성능 향삭을 체감하기 적합하지 않음
+- 식상하고 이미지가 너무 잘 정제되어 있어서 별다른 전처리 없이도 학습 성능이 매우 잘 나옴
+
+#### 다른 dataset 찾으려면
+> Google 'Dataset Search' 서비스를  이용하면 머신러닝에 사용될 수 있는 데이터셋을 쉽게 검색할 수 있음!   
+> https://datasetsearch.research.google.com/
+
+</div>
+</details>
+
+<details>
 <summary> Pipeline  (눌러서 내용보기) </summary>
 <div markdown="1">
 
