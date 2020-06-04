@@ -154,7 +154,8 @@ pod network add-on로 Calico를 사용하므로 `--pod-network-cidr` 설정 값�
 
 [Calico 설치](https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/calico)  
 
-`kubectl get pods -n kube-system`
+`kubectl get nodes`
+`kubectl get pods -n kube-system -o -wide`
  - pod network add-on이 설치되어 있지 않은 상태에서는 CoreDNS가 아직 시작되지 않은 상태를 확인할 수 있다.
 ![corednserr](./img/corednserr.png)
 
