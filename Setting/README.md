@@ -10,6 +10,17 @@ Setting
 ##### 🌼 Sudo 명령없이 Docker 실행
 [dockerSudo.sh](dockerSudo.sh)
 
+##### 🌼 docker 특정 버전 다운로드
+[docker downgrade](https://docs.docker.com/engine/install/ubuntu/)
+```
+apt-get install docker-ce=5:18.09.1~3-0~ubuntu-xenial docker-ce-cli=5:18.09.1~3-0~ubuntu-xenial containerd.io
+```
+
+##### 🌼 docker cgroup 확인
+```
+docker info | grep -i cgroup
+```
+
 </div>
 </details>
 
@@ -29,6 +40,14 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 ##### 🌼 Calico 포트 방화벽 열기
 [firewallCalico.sh](./firewallCalico.sh)
 
+##### 🌼 Flannel 포트 방화벽 열기
+[firewallFlannel.sh](./firewallFlannel.sh)
+
+##### 🌼 모든 방화벽 열기
+```
+systemctl stop firewalld
+```
+
 </div>
 </details>
 
@@ -45,13 +64,40 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 <summary> Kubelet, Kubeadm Kubectl 설치 (눌러서 내용보기) </summary>
 <div markdown="1">  
 
-[k8s_install.sh](./k8s_install.sh)
-yum에서 repository문제 시 apt-get으로
+```
+sudo apt install apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+sudo add-apt-repository "deb https://apt.kubernetes.io/ kubernetes-$(lsb_release -cs) main"
+sudo apt update
+sudo apt install kubelet=1.14.1-00 kubeadm=1.14.1-00 kubectl=1.14.1-00 kubernetes-cni=0.7.5-00
+```
+
+[k8s_install.sh](./k8s_install.sh)  
+yum에서 repository문제 시 apt-get으로  
 [ubuntu16.04_kubernetes_install.md](./ubuntu16.04_kubernetes_install.md) 참고해서 설치  
 
 1.14.x 버전으로 만들어야하면 아래 소스를 참고해요!  
 [k8s_downgrade.sh](./k8s_downgrade.sh)
 
+##### 🌼 kubelet 재실행하기
+```
+systemctl restart kubelet
+```
+
+##### 🌼 kubelet 상태보기
+```
+systemctl status kubelet
+```
+
+##### 🌼 kubelet 로그보기
+```
+journalctl -xeu kubelet
+```
+
+##### 🌼 kubelet 다시 다운로드
+```
+apt-get purge kubelet && apt-get install kubelet=1.14.0-00
+```
 </div>
 </details>
 
@@ -73,6 +119,10 @@ Swap이 off 되어 있지 않으면 kubeadm init 단계에서
 `"[ERROR SWAP]: running with swap on is not supported. Please disable swap"` 에러가 출력된다.  
 [swapOff.sh](./swapOff.sh)
 
+```
+sudo swapoff -a
+sudo sed -i '/swap/s/^/#/' /etc/fstab
+```
 </div>
 </details>
 
