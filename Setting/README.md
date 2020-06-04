@@ -148,4 +148,6 @@ http://ghcksdk.com/kubeflow-installation/
 
 
 - 참고자료
+    - [Kubernetes 설치 및 환경 구성하기](https://medium.com/finda-tech/overview-8d169b2a54ff)
+    - [coredns CrashLoopBackOff due to dnsmasq#1292](https://github.com/kubernetes/kubeadm/issues/1292)
     - [Docker, Kubernetes 환경에서 CUBRID 컨테이너 서비스 해보기](https://www.cubrid.com/blog/3820603)
