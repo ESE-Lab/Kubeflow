@@ -166,6 +166,11 @@ pod network add-on로 Calico를 사용하므로 `--pod-network-cidr` 설정 값�
 - pod network add-on를 설치한 이후에 CoreDNS가 정상적으로 시작된 상태를 확인할 수 있다.
 ![coredns](./img/coredns.png)
 
+##### CrashLoopBackOff
+```
+# delete loop
+kubectl -n kube-system edit configmap coredns
+```
 ```
 kubectl describe pod coredns-fb8bdccf-ppzwm -n kube-system
 ```
