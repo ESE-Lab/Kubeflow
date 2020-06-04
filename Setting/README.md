@@ -70,6 +70,13 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo add-apt-repository "deb https://apt.kubernetes.io/ kubernetes-$(lsb_release -cs) main"
 sudo apt update
 sudo apt install kubelet=1.14.1-00 kubeadm=1.14.1-00 kubectl=1.14.1-00 kubernetes-cni=0.7.5-00
+
+# 패키지가 자동으로 설치, 업그레이드, 제거되지않도록 고정함
+sudo apt-mark hold kubelet kubeadm kubectl
+
+kubeadm version
+kubelet --version
+kubectl version
 ```
 
 [k8s_install.sh](./k8s_install.sh)  
@@ -158,6 +165,15 @@ pod network add-on로 Calico를 사용하므로 `--pod-network-cidr` 설정 값�
 
 - pod network add-on를 설치한 이후에 CoreDNS가 정상적으로 시작된 상태를 확인할 수 있다.
 ![coredns](./img/coredns.png)
+
+```
+kubectl describe pod coredns-fb8bdccf-ppzwm -n kube-system
+```
+
+```
+kubectl logs -n kube-system coredns-fb8bdccf-ppzwm -n kube-system
+```
+
 </div>
 </details>
 
