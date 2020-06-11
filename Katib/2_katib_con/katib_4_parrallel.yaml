@@ -4,7 +4,7 @@ metadata:
   namespace: admin
   name: random-job-parrallel-4-try-100
 spec:
-  parallelTrialCount: 1
+  parallelTrialCount: 4
   maxTrialCount: 100
   maxFailedTrialCount: 3
   objective:
