@@ -2,10 +2,10 @@ apiVersion: "kubeflow.org/v1alpha3"
 kind: Experiment
 metadata:
   namespace: admin
-  name: random-job-parrallel-4-try-100
+  name: random-job-example
 spec:
-  parallelTrialCount: 4
-  maxTrialCount: 100
+  parallelTrialCount: 1
+  maxTrialCount: 12
   maxFailedTrialCount: 3
   objective:
     type: maximize
@@ -13,14 +13,15 @@ spec:
     objectiveMetricName: Validation-accuracy
     additionalMetricNames:
       - accuracy
+      - loss
   algorithm:
     algorithmName: random
   parameters:
     - name: --learning_rate
       parameterType: double
       feasibleSpace:
-        min: "0.0001"
-        max: "0.01"
+        min: "0.01"
+        max: "0.2"
     - name: --dropout
       parameterType: double
       feasibleSpace:
