@@ -21,15 +21,8 @@
 
 ## 🌼 [Setting](https://github.com/ESE-Lab/Kubeflow/tree/master/Setting)
 
-#### 설명
+[지구별 여행자](https://kangwoo.kr/category/machine-learning/kubeflow/)
 
-#### 좌측 Coralboard
-<div style="background-color: #f6f8fa">
-👉 [축소, 확대 기능], [Notification], [자연스런 애니메이션], [하단의 세팅과 메세지 개인적인 창 분리]
-</div>
-<br>
-
-hi
 </div>
 </details>
 
